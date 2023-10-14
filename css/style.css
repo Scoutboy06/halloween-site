@@ -1,0 +1,284 @@
+@font-face {
+  font-family: 'Home Alone';
+  font-display: swap;
+  src: url('/fonts/Home_Alone.ttf');
+}
+
+/* Global theme */
+:root {
+  --background: 20 14.3% 4.1%;
+  --foreground: 60 9.1% 97.8%;
+  --card: 20 14.3% 4.1%;
+  --card-foreground: 60 9.1% 97.8%;
+  --popover: 20 14.3% 4.1%;
+  --popover-foreground: 60 9.1% 97.8%;
+  --primary: 20.5 90.2% 48.2%;
+  --primary-foreground: 60 9.1% 97.8%;
+  --secondary: 12 6.5% 15.1%;
+  --secondary-foreground: 60 9.1% 97.8%;
+  --muted: 12 6.5% 15.1%;
+  --muted-foreground: 24 5.4% 63.9%;
+  --accent: 12 6.5% 15.1%;
+  --accent-foreground: 60 9.1% 97.8%;
+  --destructive: 0 72.2% 50.6%;
+  --destructive-foreground: 60 9.1% 97.8%;
+  --border: 12 6.5% 15.1%;
+  --input: 12 6.5% 15.1%;
+  --ring: 20.5 90.2% 48.2%;
+  --radius: 0.5rem;
+}
+
+/* Global settings */
+:root {
+  --bezier: cubic-bezier(0.4, 0, 0.2, 1);
+
+  --navbar-height: 64px;
+  --global-padding: 2vw;
+  --article-padding: 6vw;
+}
+
+/* Default styles */
+:root {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+.icon {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px; /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  background-color: transparent;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.btn {
+  --bg-color: transparent;
+  --hover-bg-color: transparent;
+  --color: hsl(var(--foreground));
+  --hover-color: var(--color);
+  background-color: var(--bg-color);
+  color: var(--color);
+
+  border: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 150ms var(--bezier);
+
+  height: 2.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+
+  &:hover {
+    --bg-color: var(--hover-bg-color) !important;
+    --color: var(--hover-color) !important;
+  }
+
+  &.lg {
+    height: 2.75rem;
+    padding-inline: 2rem;
+  }
+
+  &.sm {
+    height: 2.25rem;
+    padding-inline: 0.75rem;
+  }
+
+  &.xsm {
+    height: 1.75rem;
+    padding-inline: 0.5rem;
+  }
+
+  &.primary {
+    --bg-color: hsl(var(--primary));
+    --hover-bg-color: hsl(var(--primary) / 0.9);
+    --color: hsl(var(--primary-foreground));
+  }
+
+  &.secondary {
+    --bg-color: hsl(var(--secondary));
+    --hover-bg-color: hsl(var(--secondary) / 0.8);
+    --color: hsl(var(--secondary-foreground));
+  }
+
+  &.ghost {
+    --bg-color: transparent;
+    --hover-bg-color: hsl(var(--accent));
+    --color: hsl(var(--accent-foreground));
+  }
+
+  &.link {
+    --color: hsl(var(--primary-foreground));
+    text-underline-offset: 4px;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &.navlink {
+    --hover-bg-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--navbar-height);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  padding: 0 var(--global-padding);
+  z-index: 2;
+
+  & .left {
+    display: flex;
+    align-items: center;
+
+    & #logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      letter-spacing: 0.3ch;
+
+      & img {
+        height: calc(var(--navbar-height) * 0.6);
+      }
+
+      & span {
+        width: 1px;
+        font-family: 'Home Alone', cursive;
+      }
+    }
+  }
+
+  & .middle {
+    justify-self: center;
+
+    & ul {
+      display: flex;
+    }
+  }
+
+  & .navigation {
+    display: flex;
+
+    & li {
+      list-style: none;
+    }
+
+    & a.btn {
+      font-size: 1rem;
+    }
+  }
+
+  & .right {
+    justify-self: right;
+  }
+}
+
+header {
+  position: relative;
+  height: 100svh;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  overflow: hidden;
+
+  & .backdrop {
+    z-index: -1;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-image: url('/img/header.webp'), url('/img/header.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    opacity: 0.5;
+  }
+
+  & .content {
+    text-align: center;
+    width: 50%;
+    text-shadow: rgba(0, 0, 0, 0.15) 0px 1px 3px, rgba(0, 0, 0, 0.3) 0px 1px 2px;
+
+    & h1 {
+      font-size: 5rem;
+      text-align: center;
+      line-height: 6rem;
+    }
+
+    & h6 {
+      margin-top: 2rem;
+      font-weight: normal;
+      font-size: 1rem;
+    }
+  }
+
+  & .scroll-down {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3rem;
+    aspect-ratio: 1;
+    background-color: rgba(255, 255, 255, 0.05);
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    transition: 150ms var(--bezier);
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+}
