@@ -1,7 +1,5 @@
 function initObserver() {
-  const sections = document.querySelectorAll(
-    '#main > section, #footer, #header'
-  );
+  const sections = document.querySelectorAll('#main > section');
 
   const observer = new IntersectionObserver(
     (entries) => {
@@ -9,16 +7,6 @@ function initObserver() {
         if (!entry.isIntersecting) continue;
 
         const id = entry.target.getAttribute('id');
-
-        if (entry.target.tagName !== 'SECTION') {
-          location.hash = '';
-          document
-            .querySelector('#aside a.current')
-            ?.classList?.remove('current');
-          continue;
-        }
-
-        location.hash = id;
 
         document
           .querySelector('#aside a.current')
@@ -29,8 +17,9 @@ function initObserver() {
       }
     },
     {
+      // threshold: 1,
       threshold: 0,
-      rootMargin: '-50% 0px',
+      rootMargin: '-50%',
     }
   );
 

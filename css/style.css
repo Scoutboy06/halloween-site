@@ -340,8 +340,7 @@ button {
     list-style: inside;
   }
 
-  & a {
-    transition: none;
+  & .btn {
     padding-inline: 0;
 
     &:hover,
